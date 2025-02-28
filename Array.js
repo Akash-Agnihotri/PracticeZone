@@ -280,49 +280,160 @@ console.log(randomElementsArray);
 console.log(
   "39. Reverse words in an array ['hello', 'world'] to ['world', 'hello']."
 );
-console.log("40. Find the most frequent element in [1, 2, 2, 3, 3, 3, 4].");
+const arr39 = ["hello", "world"];
+const reverseWords = arr39.reverse();
+console.log(reverseWords);
 
+console.log("40. Find the most frequent element in [1, 2, 2, 3, 3, 3, 4].");
+let arr40 = [1, 2, 2, 3, 3, 3, 4];
+let seen = new Set();
+let duplic = [];
+for (let i = 0; i < arr40.length; i++) {
+  if (seen.has(arr40[i])) {
+    let arr40 = [1, 2, 2, 3, 3, 3, 4];
+    duplic.push(arr40[i]);
+  } else {
+    seen.add(arr40[i]);
+  }
+}
+console.log(duplic);
 console.log("41. Find all pairs in [1, 2, 3, 4, 5] that sum up to 6.");
+let arr41 = [1, 2, 3, 4, 5];
+for (let i = 0; i < arr41.length; i++) {
+  for (let j = i + 1; j < arr41.length; j++) {
+    let sum = arr41[i] + arr41[j];
+    if (sum == 6) {
+      console.log(arr41[i], arr41[j]);
+    }
+  }
+}
+
 console.log(
   "42. Implement a function to chunk an array [1, 2, 3, 4, 5] into smaller subarrays of size 2."
 );
+
+let arr42 = [1, 2, 3, 4, 5];
+let narr42 = [];
+let chunksize = 2;
+
+for (i = 0; i < arr42.length; i += chunksize) {
+  let chunk = [];
+  for (j = i; j < i + chunksize && j < arr42.length; j++) {
+    chunk.push(arr42[j]);
+  }
+  narr42.push(chunk);
+}
+console.log(narr42);
 console.log(
   "43. Convert an array of objects [{name: 'John'}, {name: 'Jane'}] into ['John', 'Jane']."
 );
+
+let object = [{ name: "John" }, { name: "Jane" }];
+let arr43 = [];
+for (let i = 0; i < object.length; i++) {
+  arr43.push(object[i].name);
+}
+console.log(arr43);
 console.log(
   "44. Implement a deep flatten function for nested arrays [[1, [2, [3, 4]]], 5]."
 );
+
+function flatten(arr44) {
+  return arr44.reduce((acc, value) => {
+    return Array.isArray(value)
+      ? acc.concat(flatten(value))
+      : acc.concat(value);
+  }, []);
+}
+console.log(flatten([[1, [2, [3, 4]]], 5]));
+
 console.log(
   "45. Implement a function to rotate an array [1, 2, 3, 4] k times."
 );
+
+function arrrotate(arr45, k) {
+  let n = arr45.length;
+
+  k = k % n;
+
+  for (i = 0; i < k; i++) {
+    let lastkElement = arr45.pop();
+    arr45.unshift(lastkElement);
+  }
+  return arr45;
+}
+console.log(arrrotate([1, 2, 3, 4], 2));
+
 console.log(
   "46. Implement a function to check if an array is a palindrome [1, 2, 3, 2, 1]."
 );
+
+function palindrome(arr46) {
+  let pl = arr46.join("") === arr46.reverse().join("");
+  if (pl === true) {
+    console.log(arr46, " is palindrome");
+  } else {
+    console.log(arr46, "given array is not palindrome");
+  }
+}
+palindrome(["m", "a", "d", "a", "m"]);
+palindrome([1, 2, 3, 2, 1]);
+palindrome([1, 2, 3, 2]);
+
 console.log(
   "47. Implement a function to merge two sorted arrays [1, 3, 5] and [2, 4, 6] into one sorted array."
 );
+function mer(arr47a, arr47b) {
+  let sorted = arr47a.concat(arr47b).sort();
+  console.log(sorted);
+}
+mer([1, 3, 5], [2, 4, 6]);
+
 console.log(
   "48. Implement a function to find the missing number in an array [1, 2, 3, 5] (where numbers should be consecutive)."
 );
+
+function missingNumber(arr48) {
+  for (let i = 1; i <= Math.max(...arr48); i++) {
+    if (arr48.indexOf(i) == -1) {
+      console.log(i);
+    }
+  }
+}
+
+/* //OPtimised approach 
+function missingNumber(arr48) {
+  let maxNum = Math.max(...arr48);
+  let numSet = new Set(arr48);
+  
+  for (let i = 1; i <= maxNum; i++) {
+    if (!numSet.has(i)) {
+      console.log(i);
+    }
+  }
+}
+missingNumber([1, 2, 3, 5]);       
+missingNumber([1, 2, 3, 5, 6, 7, 8, 10]);*/
+
 console.log(
   "49. Implement a function that returns the kth smallest element in [7, 10, 4, 3, 20, 15] when k = 3."
 );
-console.log(
-  "50. Implement a function to find the longest increasing subsequence in [10, 22, 9, 33, 21, 50, 41, 60]."
-);
+function minimumNumber(arr49) {
+  console.log(Math.min(...arr49));
+}
+minimumNumber([7, 10, 4, 3, 20, 15]);
 
-/* -------------------------------------COHORT QUESTIONS----------------------------
-1) // You just need to implement the addGuest function
+/* -------------------------------------COHORT QUESTIONS----------------------------*/
+// 1) You just need to implement the addGuest function
 function addGuest(guestList, newGuest) {
-    // Add the newGuest to guestList and return the updated list
-  
-    guestList.push(newGuest);
-    return(guestList);
-  }
-  addGuest(["Anirudh", "Mukul"], "Radhika");
-  addGuest([], "sahil");
-  addGuest(["Piyush","Tejas"]);
-  
+  // Add the newGuest to guestList and return the updated list
+
+  guestList.push(newGuest);
+  return guestList;
+}
+addGuest(["Anirudh", "Mukul"], "Radhika");
+addGuest([], "sahil");
+addGuest(["Piyush", "Tejas"]);
 
 // 2) You just need to implement the eatCandy function
 function eatCandy(candyJar) {
@@ -406,4 +517,3 @@ function countMovies(movieList) {
 countMovies(["Inception", "Avatar", "Titanic"]);
 countMovies(["Interstellar", "Gravity", "The Martian"]);
 countMovies(["The Godfather", "Pulp Fiction", "Fight Club", "Toy Story"]);
- */
