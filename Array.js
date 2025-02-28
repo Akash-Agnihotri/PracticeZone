@@ -6,14 +6,14 @@ arr.push("Hi", 1, "js");
 console.log(arr);
 console.log("2. Find the length of an array [10, 20, 30, 40].");
 let arr1 = [10, 20, 30, 40];
-console.log(arr.length);
+console.log(arr1.length);
 
 console.log(
   "3. Access the first and last element of an array [5, 10, 15, 20]."
 );
 
 let arr3 = [5, 10, 15, 20];
-console.log(arr3.slice(0, 1));
+console.log(arr3[0], arr3[arr3.length - 1]);
 
 console.log("4. Convert a string 'hello' into an array of characters.");
 let arr4 = "hello";
@@ -146,7 +146,8 @@ console.log(
   "24. Filter names that start with 'J' from ['John', 'Jane', 'Doe', 'Jack']."
 );
 let arr24 = ["John", "Jane", "Doe", "Jack"];
-let arr24a = arr.filter((word) => word == "J");
+let arr24a = arr24.filter((word) => word.startsWith("J"));
+
 console.log(arr24a);
 console.log(
   "25. Convert an array of numbers [1, 2, 3, 4] into an array of their squares."
@@ -156,15 +157,16 @@ let sqr = arr25.map((x) => x * x);
 console.log(sqr);
 console.log("26. Find the first even number in an array [1, 3, 7, 4, 9, 2].");
 let arr26 = [1, 3, 7, 4, 9, 2];
-let evenn = arr26.filter((x) => x % 2 == 0);
-evenn.pop();
-console.log(evenn);
+// let evenn = arr26.filter((x) => x % 2 == 0);
+// evenn.pop();
+// console.log(evenn);
+console.log(arr26.find((x) => x % 2 === 0));
 
 console.log(
   "27. Find the index of the first number greater than 50 in [10, 20, 60, 30]."
 );
 let arr27 = [10, 20, 60, 30];
-let arr27a = arr27.filter((x) => x > 50);
+let arr27a = arr27.findIndex((x) => x > 50);
 console.log(arr27a);
 
 console.log("28. Flatten an array [[1, 2], [3, 4], [5, 6]].");
@@ -186,7 +188,8 @@ console.log(
   "30. Convert an array of names ['John', 'Jane'] into a string 'John & Jane'."
 );
 let arr30 = ["John", "Jane"];
-console.log(arr30.toString());
+// console.log(arr30.toString());
+console.log(arr30.join("&"));
 
 console.log("31. Find the second largest number in [10, 20, 30, 40].");
 
@@ -194,8 +197,9 @@ let arr31 = [10, 20, 30, 40];
 arr31.sort(function (a, b) {
   return b - a;
 });
-console.log(arr31.splice(1, 1));
-console.log(arr31);
+// console.log(arr31.splice(1, 1));
+// console.log(arr31);
+console.log(arr31[1]);
 console.log("32. Rotate an array  one position to the right.");
 function rotation(arr32, x) {
   for (let i = 0; i < x; i++) {
@@ -228,27 +232,30 @@ console.log(
   "35. Check if all numbers in an array [10, 20, 30] are greater than 5."
 );
 let arr35 = [10, 20, 30];
-function gt(arr35a) {
-  if (arr35a > 5) {
-    console.log("greater than 5");
-  } else {
-    console.log("not greater");
-  }
-}
-gt(...arr35);
-
+// function gt(arr35a) {
+//   if (arr35a > 5) {
+//     console.log("greater than 5");
+//   } else {
+//     console.log("not greater");
+//   }
+// }
+// gt(...arr35);
+console.log(arr35.every((num) => num > 5));
 console.log(
   "36. Check if at least one number in [1, 2, 3, 10] is greater than 5."
 );
 let arr36 = [1, 2, 3, 10];
-function gt(arr36a) {
-  if (arr36a > 5) {
-    console.log("greater than 5");
-  } else {
-    console.log("not greater");
-  }
-}
-gt(...arr36);
+// function gt(arr36a) {
+//   if (arr36a > 5) {
+//     console.log("greater than 5");
+//   } else {
+//     console.log("not greater");
+//   }
+// }
+// gt(...arr36);
+
+console.log(arr36.some((num) => num > 5));
+
 console.log(
   "37. Split an array [1, 2, 3, 4, 5, 6] into two arrays: one for even numbers and one for odd numbers."
 );
