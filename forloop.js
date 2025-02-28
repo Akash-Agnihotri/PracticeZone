@@ -149,9 +149,41 @@ for (let i = 0; i < num; i++) {
 }
 
 console.log("19.Find the sum of all even numbers from 1 to 100");
+let sum1 = "";
+let n1 = 100;
+for (let i = 2; i <= n1; i++) {
+  sum1 = (n * (n + i)) / 2;
+  console.log(sum1);
+}
 
 console.log("20.Find the sum of digits of a given number using a for loop");
+
+function sumOfDigits(n) {
+  if (n == 0) {
+    return 0;
+  } else {
+    return (n % 10) + sumOfDigits(Math.floor(n / 10));
+  }
+}
+console.log(sumOfDigits(123456));
+
 console.log("21.Print all Fibonacci numbers up to n using a for loop");
+
+function fibonacci(n) {
+  let ans = [];
+  let f1 = 0;
+  let f2 = 1;
+  ans.push(f1);
+  for (let i = 1; i < n; i++) {
+    ans.push(f2);
+    let next = f1 + f2;
+    f1 = f2;
+    f2 = next;
+  }
+  console.log(ans.join(""));
+}
+let result = fibonacci(7);
+
 console.log(
   "22.Find the Greatest Common Divisor (GCD) of two numbers using a for loop"
 );
@@ -166,21 +198,23 @@ console.log(
   "26.Print a multiplication table of a given number using a for loop"
 );
 function table(number) {
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 1; i <= 10; i++) {
     console.log(i * number);
   }
 }
 table(5);
+table(6);
+table(12);
 
 console.log("27.Print all prime numbers from 1 to n");
 
 console.log("28.Generate Pascal’s Triangle up to n rows using nested loops");
 console.log("29.Find the power of a number x^y using a for loop`");
-let sqr = "";
-for (let i = 0; i <= 10; i++) {
-  sqr = i * i;
+
+function pwr(x, y) {
+  return x ** y;
 }
-console.log(sqr);
+console.log(pwr(6, 3));
 
 console.log(
   "30.Check if a number is a palindrome (same forward and backward) using a for loop"
