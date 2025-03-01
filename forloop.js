@@ -1,5 +1,3 @@
-/* --------------------------------------------------------------------- 1 to 10 ------------------------------------------------------------ */
-//
 console.log("1. Print numbers from 1 to 10");
 for (let i = 1; i <= 10; i++) {
   console.log(i);
@@ -63,8 +61,6 @@ for (let i = 1; i <= 10; i++) {
   sum += i;
 }
 console.log(sum);
-
-/* --------------------------------------------------------------------- 11 to 30 ------------------------------------------------------------ */
 
 console.log("11.Print a 5x5 square of stars (*)");
 
@@ -149,13 +145,12 @@ for (let i = 0; i < num; i++) {
 }
 
 console.log("19.Find the sum of all even numbers from 1 to 100");
-let sum1 = "";
-let n1 = 100;
-for (let i = 2; i <= n1; i++) {
-  sum1 = (n * (n + i)) / 2;
-  console.log(sum1);
-}
 
+let sum1 = 0;
+for (let i = 2; i <= 100; i += 2) {
+  sum1 += i;
+}
+console.log(sum1);
 console.log("20.Find the sum of digits of a given number using a for loop");
 
 function sumOfDigits(n) {
@@ -187,19 +182,80 @@ let result = fibonacci(7);
 console.log(
   "22.Find the Greatest Common Divisor (GCD) of two numbers using a for loop"
 );
+
+function gcd(a, b) {
+  let minnum = Math.min(a, b);
+
+  console.log(minnum);
+
+  for (let i = minnum; i >= 1; i--) {
+    if (a % i == 0 && b % i == 0) {
+      console.log(i, "is the gcd");
+      break;
+    }
+  }
+}
+gcd(36, 60);
+
 console.log(
   "23.Check if a number is an Armstrong number (e.g., 153 = 1³ + 5³ + 3³)"
 );
+
+function armstrong(n) {
+  let originalNumber = n;
+  let count = 0;
+  let temp = n;
+  while (temp > 0) {
+    count++;
+    temp = Math.floor(temp / 10);
+  }
+
+  let sum = 0;
+  temp = n;
+  for (; temp > 0; temp = Math.floor(temp / 10)) {
+    let lastdigit = temp % 10;
+    sum += Math.pow(lastdigit, count);
+  }
+  return sum === originalNumber;
+}
+console.log(armstrong(123));
+console.log(armstrong(9474));
+console.log(armstrong(153));
+
 console.log("24.Convert a decimal number to binary using a for loop");
+
+function decimalToBinary(n) {
+  let binary = "";
+  for (let i = n; i > 0; i = Math.floor(i / 2)) {
+    binary = (i % 2) + binary;
+  }
+  return binary || 0;
+}
+console.log(decimalToBinary(25));
+console.log(decimalToBinary(10));
+
 console.log(
   "25.Find the Least Common Multiple (LCM) of two numbers using a for loop"
 );
+function lcm(a, b) {
+  let maxnum = Math.max(a, b);
+
+  for (let i = maxnum; ; i++) {
+    if (i % a === 0 && i % b === 0) {
+      return i;
+    }
+  }
+}
+console.log(lcm(36, 60));
+console.log(lcm(12, 18));
+console.log(lcm(5, 7));
+console.log(lcm(8, 14));
 console.log(
   "26.Print a multiplication table of a given number using a for loop"
 );
 function table(number) {
   for (let i = 1; i <= 10; i++) {
-    console.log(i * number);
+    console.log(i * number, "tablbe of ", number);
   }
 }
 table(5);
@@ -207,15 +263,47 @@ table(6);
 table(12);
 
 console.log("27.Print all prime numbers from 1 to n");
+function primeNumbers(n) {
+  for (let i = 2; i <= n; i++) {
+    let isprime = true;
+    for (let j = 2; j * j <= i; j++) {
+      if (i % j === 0) {
+        isprime = false;
+        break;
+      }
+    }
+    if (isprime) {
+      console.log(i);
+    }
+  }
+}
+primeNumbers(50);
 
-console.log("28.Generate Pascal’s Triangle up to n rows using nested loops");
-console.log("29.Find the power of a number x^y using a for loop`");
+console.log("28.Find the power of a number x^y using a for loop`");
 
 function pwr(x, y) {
-  return x ** y;
+  let result = 1;
+
+  for (let i = 0; i < y; i++) {
+    result *= x;
+  }
+  return result;
 }
 console.log(pwr(6, 3));
 
 console.log(
-  "30.Check if a number is a palindrome (same forward and backward) using a for loop"
+  "29.Check if a number is a palindrome using a for loop"
 );
+
+function palindrome(n) {
+  let str = n.toString();
+  let len = str.length;
+  for (let i = 0; i < len / 2; i++) {
+    if (str[i] !== str[len - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(palindrome(123));
+console.log(palindrome(12321));
